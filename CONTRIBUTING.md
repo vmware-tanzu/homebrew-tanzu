@@ -1,77 +1,124 @@
-
-# Contributing to homebrew-tanzu
+# Homebrew-Tanzu
 
 The homebrew-tanzu project team welcomes contributions from the community. Before you start working with homebrew-tanzu, please
 read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
 signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
 as an open-source patch.
 
-## Contribution Flow
+## Contribution workflow
 
-This is a rough outline of what a contributor's workflow looks like:
+This section describes the process for contributing a bug fix or new feature.
 
-- Create a topic branch from where you want to base your work
-- Make commits of logical units
-- Make sure your commit messages are in the proper format (see below)
-- Push your changes to a topic branch in your fork of the repository
-- Submit a pull request
+### Before you submit a pull request
 
-Example:
+This project operates according to the _talk, then code_ rule.
+If you plan to submit a pull request for anything more than a typo or obvious bug fix,
+first you _should_ [raise an issue][new-issue] to discuss your proposal, before submitting any code.
 
-``` shell
-git remote add upstream https://github.com/vmware/homebrew-tanzu.git
-git checkout -b my-new-feature main
-git commit -a
-git push origin my-new-feature
+### Commit message and PR guidelines
+
+- Have a short subject on the first line and a body.
+- Use the imperative mood (ie "If applied, this commit will (subject)" should make sense).
+- There must be a DCO line ("Signed-off-by: Amanda Katona <akatona@vmware.com>"), see [DCO Sign Off](#dco-sign-off) below.
+- Put a summary of the main area affected by the commit at the start,
+with a colon as delimiter. For example 'docs:', 'extensions/(extensionname):', 'design:' or something similar.
+- Do not merge commits that don't relate to the affected issue (e.g. "Updating from PR comments", etc). Should
+the need to cherrypick a commit or rollback arise, it should be clear what a specific commit's purpose is.
+- If the main branch has moved on, you'll need to rebase before we can merge,
+so merging upstream main or rebasing from upstream before opening your
+PR will probably save you some time.
+
+Pull requests *must* include a `Fixes #NNNN` or `Updates #NNNN` comment.
+Remember that `Fixes` will close the associated issue, and `Updates` will link the PR to it.
+
+#### Sample commit message
+
+```text
+extensions/extenzi: Add quux functions
+
+To implement the quux functions from #xxyyz, we need to
+flottivate the crosp, then ensure that the orping is
+appred.
+
+Fixes #xxyyz
+
+Signed-off-by: Your Name <you@youremail.com>
 ```
 
-### Staying In Sync With Upstream
+### Merging commits
 
-When your branch gets out of sync with the vmware/main branch, use the following to update:
+Maintainers should prefer to merge pull requests with the [Squash and merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) option.
+This option is preferred for a number of reasons.
+First, it causes GitHub to insert the pull request number in the commit subject which makes it easier to track which PR changes landed in.
+Second, it gives maintainers an opportunity to edit the commit message to conform to TCE standards and general [good practice](https://chris.beams.io/posts/git-commit/).
+Finally, a one-to-one correspondence between pull requests and commits makes it easier to manage reverting changes and increases the reliability of bisecting the tree (since CI runs at a pull request granularity).
 
-``` shell
-git checkout my-new-feature
-git fetch -a
-git pull --rebase upstream main
-git push --force-with-lease origin my-new-feature
+At a maintainer's discretion, pull requests with multiple commits can be merged with the [Create a merge commit](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges) option.
+Merging pull requests with multiple commits can make sense in cases where a change involves code generation or mechanical changes that can be cleanly separated from semantic changes.
+The maintainer should review commit messages for each commit and make sure that each commit builds and passes tests.
+
+## DCO Sign off
+
+All authors to the project retain copyright to their work. However, to ensure
+that they are only submitting work that they have rights to, we are requiring
+everyone to acknowledge this by signing their work.
+
+Since this signature indicates your rights to the contribution and
+certifies the statements below, it must contain your real name and
+email address. Various forms of noreply email address must not be used.
+
+Any copyright notices in this repository should specify the authors as "The
+project authors".
+
+To sign your work, just add a line like this at the end of your commit message:
+
+```text
+Signed-off-by: Amanda Katona <akatona@vmware.com>
 ```
 
-### Updating pull requests
+This can easily be done with the `--signoff` option to `git commit`.
 
-If your PR fails to pass CI or needs changes based on code review, you'll most likely want to squash these changes into
-existing commits.
+By doing this you state that you can certify the following (from [https://developercertificate.org/](https://developercertificate.org/) ):
 
-If your pull request contains a single commit or your changes are related to the most recent commit, you can simply
-amend the commit.
+```text
+Developer Certificate of Origin
+Version 1.1
 
-``` shell
-git add .
-git commit --amend
-git push --force-with-lease origin my-new-feature
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+1 Letterman Drive
+Suite D4700
+San Francisco, CA, 94129
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+
+
+Developer's Certificate of Origin 1.1
+
+By making a contribution to this project, I certify that:
+
+(a) The contribution was created in whole or in part by me and I
+    have the right to submit it under the open source license
+    indicated in the file; or
+
+(b) The contribution is based upon previous work that, to the best
+    of my knowledge, is covered under an appropriate open source
+    license and I have the right under that license to submit that
+    work with modifications, whether created in whole or in part
+    by me, under the same open source license (unless I am
+    permitted to submit under a different license), as indicated
+    in the file; or
+
+(c) The contribution was provided directly to me by some other
+    person who certified (a), (b) or (c) and I have not modified
+    it.
+
+(d) I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including all
+    personal information I submit with it, including my sign-off) is
+    maintained indefinitely and may be redistributed consistent with
+    this project or the open source license(s) involved.
 ```
 
-If you need to squash changes into an earlier commit, you can use:
+[new-issue]: https://github.com/vmware-tanzu/homebrew-tanzu/issues/new/
 
-``` shell
-git add .
-git commit --fixup <commit>
-git rebase -i --autosquash main
-git push --force-with-lease origin my-new-feature
-```
-
-Be sure to add a comment to the PR indicating your new changes are ready to review, as GitHub does not generate a
-notification when you git push.
-
-### Code Style
-
-### Formatting Commit Messages
-
-We follow the conventions on [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/).
-
-Be sure to include any related GitHub issue references in the commit message.  See
-[GFM syntax](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown) for referencing issues
-and commits.
-
-## Reporting Bugs and Creating Issues
-
-When opening a new issue, try to roughly follow the commit message format conventions above.

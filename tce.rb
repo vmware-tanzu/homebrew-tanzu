@@ -1,3 +1,6 @@
+# Copyright 2021 VMware Tanzu Community Edition contributors. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
 class Tce < Formula
   desc "Tanzu Community Edition"
   homepage "https://github.com/vmware-tanzu/community-edition"
