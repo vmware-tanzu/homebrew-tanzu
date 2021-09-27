@@ -21,9 +21,9 @@ class Tce < Formula
     bin.install "bin/tanzu"
     libexec.install Dir["bin/tanzu-plugin-*"]
 
-    File.write("install.sh", brew_installer_script)
-    File.chmod(0755, "install.sh")
-    libexec.install "install.sh"
+    File.write("configure-tce.sh", brew_installer_script)
+    File.chmod(0755, "configure-tce.sh")
+    libexec.install "configure-tce.sh"
 
     File.write("uninstall.sh", brew_uninstall_script)
     File.chmod(0755, "uninstall.sh")
@@ -38,11 +38,11 @@ class Tce < Formula
     ohai "* To initialize all plugins required by TCE, an additional step is required."
     ohai "* To complete the installation, please run the following shell script:"
     ohai "*"
-    ohai "* #{libexec}/install.sh"
+    ohai "* #{libexec}/configure-tce.sh"
     ohai "*"
     ohai "******************************************************************************"
     ohai "\n"
-    ohai "To cleanup and remove TCE from your system, run the following command:"
+    ohai "To cleanup and remove TCE from your system, run the following script:"
     ohai "#{libexec}/uninstall.sh"
 
   end
