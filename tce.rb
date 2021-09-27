@@ -121,7 +121,7 @@ TANZU_CLI_NO_INIT=true tanzu init
 
 # TCE_REPO="$(tanzu plugin repo list | grep core-admin)"
 # if [[ -z "${TCE_REPO}"  ]]; then
-#   tanzu plugin repo add --name core-admin --gcp-bucket-name tce-tanzu-cli-admin-plugins --gcp-root-path artifacts-admin
+#   tanzu plugin repo add --name core-admin --gcp-bucket-name tce-tanzu-cli-framework-admin --gcp-root-path artifacts-admin
 # fi
 
 echo "Installation complete!"
