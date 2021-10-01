@@ -4,15 +4,15 @@
 class Tce < Formula
   desc "Tanzu Community Edition"
   homepage "https://github.com/vmware-tanzu/community-edition"
-  version "v0.8.0"
+  version "v0.9.1"
   head "https://github.com/vmware-tanzu/community-edition.git"
 
   if OS.mac?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-darwin-amd64-#{version}.tar.gz"
-    sha256 "e8b2087b01aad073af4e0b4e534f2ac9fe1e9b8cbcda9c52514b8c3197da272c"
+    sha256 "ae973e1f94859e930483718a3bffeadbda3d51f546fef07f57b03b9d8b2756a9"
   elsif OS.linux?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-linux-amd64-#{version}.tar.gz"
-    sha256 "b7a2177b9bb0195fd4006c84536241e0e2045a6039346b8a1c6026e8c0d58091"
+    sha256 "9558eb0f364c841dd293aacba1c28747cd17f773ad259c0853d1c25c104ad22e"
   end
 
   depends_on :arch => :x86_64
