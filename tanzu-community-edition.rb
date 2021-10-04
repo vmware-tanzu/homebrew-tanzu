@@ -62,7 +62,7 @@ class TanzuCommunityEdition < Formula
 set -o errexit
 set -o nounset
 set -o pipefail
-set -o xtrace
+set +o xtrace
 
 ALLOW_INSTALL_AS_ROOT="${ALLOW_INSTALL_AS_ROOT:-""}"
 if [[ "$EUID" -eq 0 && "${ALLOW_INSTALL_AS_ROOT}" != "true" ]]; then
@@ -138,7 +138,7 @@ EOF
 # set -o errexit
 set -o nounset
 set -o pipefail
-set -o xtrace
+set +o xtrace
 
 BUILD_OS=$(uname 2>/dev/null || echo Unknown)
 
