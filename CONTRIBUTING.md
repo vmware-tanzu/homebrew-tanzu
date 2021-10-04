@@ -1,9 +1,7 @@
 # Homebrew-Tanzu
 
 The homebrew-tanzu project team welcomes contributions from the community. Before you start working with homebrew-tanzu, please
-read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
-signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
-as an open-source patch.
+complete a [Contributor License Agreement](#contributor-license-agreement).
 
 ## Contribution workflow
 
@@ -73,4 +71,3 @@ Note: if you would like to submit an "_obvious fix_" for something like a typo,
 formatting issue or spelling mistake, you may not need to sign the CLA.
 
 [new-issue]: https://github.com/vmware-tanzu/homebrew-tanzu/issues/new/
-
