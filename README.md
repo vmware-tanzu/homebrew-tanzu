@@ -8,4 +8,5 @@ brew tap vmware-tanzu/tanzu
 brew install tce
 ```
 
-> Be sure to run the `install.sh` script referenced in the post-install steps.
+> Be sure to run the `configure-tce.sh` script referenced in the post-install steps.
+
