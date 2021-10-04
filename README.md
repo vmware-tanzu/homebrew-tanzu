@@ -5,7 +5,7 @@ Usage
 
 ```shell
 brew tap vmware-tanzu/tanzu
-brew install tce
+brew install tanzu-community-edition
 ```
 
 > Be sure to run the `configure-tce.sh` script referenced in the post-install steps.

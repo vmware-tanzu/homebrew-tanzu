@@ -1,7 +1,7 @@
 # Copyright 2021 VMware Tanzu Community Edition contributors. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-class Tce < Formula
+class TanzuCommunityEdition < Formula
   desc "Tanzu Community Edition"
   homepage "https://github.com/vmware-tanzu/community-edition"
   version "v0.9.1"
@@ -35,16 +35,18 @@ class Tce < Formula
     ohai "The Tanzu CLI has been installed on your system"
     ohai "\n"
     ohai "******************************************************************************"
-    ohai "* To initialize all plugins required by TCE, an additional step is required."
-    ohai "* To complete the installation, please run the following shell script:"
+    ohai "* To initialize all plugins required by Tanzu Community Edition, an additional"
+    ohai "* step is required. To complete the installation, please run the following"
+    ohai "* shell script:"
     ohai "*"
     ohai "* #{libexec}/configure-tce.sh"
     ohai "*"
     ohai "******************************************************************************"
     ohai "\n"
-    ohai "To cleanup and remove TCE from your system, run the following script:"
+    ohai "* To cleanup and remove Tanzu Community Edition from your system, run the"
+    ohai "* following script:"
     ohai "#{libexec}/uninstall.sh"
-
+    ohai "\n"
   end
 
   # Homebrew requires tests.
@@ -112,7 +114,7 @@ echo "Making a backup of your Kuberentes config files int /tmp"
 tar cf /tmp/`date "+%Y%m%d%H%M"`-kubernetes-configs.tar ~/.kube ~/.kube-tkg ~/.tanzu ~/.config/tanzu 2>/dev/null
 set -o errexit
 
-# explicit init of tanzu cli and add tce repo
+# explicit init of tanzu cli and add Tanzu Community Edition repo
 TANZU_CLI_NO_INIT=true tanzu init
 #TCE_REPO="$(tanzu plugin repo list | grep tce)"
 # if [[ -z "${TCE_REPO}"  ]]; then
@@ -169,7 +171,7 @@ echo "Cleanup complete!"
 echo
 echo "Removing the Tanzu CLI..."
 echo
-brew uninstall tce
+brew uninstall tanzu-community-edition
 EOF
   end
 end
