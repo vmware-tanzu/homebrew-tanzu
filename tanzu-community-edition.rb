@@ -15,8 +15,6 @@ class TanzuCommunityEdition < Formula
     sha256 "9558eb0f364c841dd293aacba1c28747cd17f773ad259c0853d1c25c104ad22e"
   end
 
-  depends_on :arch => :x86_64
-
   def install
     bin.install "bin/tanzu"
     libexec.install Dir["bin/tanzu-plugin-*"]
