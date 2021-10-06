@@ -108,7 +108,7 @@ fi
 
 # Make a backup of Kubernetes configs
 set +o errexit
-echo "Making a backup of your Kuberentes config files int /tmp"
+echo "Making a backup of your Kubernetes config files into /tmp"
 tar cf /tmp/`date "+%Y%m%d%H%M"`-kubernetes-configs.tar ~/.kube ~/.kube-tkg ~/.tanzu ~/.config/tanzu 2>/dev/null
 set -o errexit
 
