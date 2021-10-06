@@ -4,8 +4,7 @@ Homebrew tap for [Tanzu Community Edition](https://github.com/vmware-tanzu/commu
 Usage
 
 ```shell
-brew tap vmware-tanzu/tanzu
-brew install tanzu-community-edition
+brew install vmware-tanzu/tanzu/tanzu-community-edition
 ```
 
 > Be sure to run the `configure-tce.sh` script referenced in the post-install steps.
