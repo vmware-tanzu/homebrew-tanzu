@@ -1,6 +1,6 @@
 ---
 name: Feedback Report
-about: File general feedback on Tanzu Community Edition.
+about: File general feedback on the VMware Tanzu Homebrew Tap.
 title: ''
 labels: kind/feedback, triage/needs-triage
 assignees: ''
@@ -11,7 +11,7 @@ assignees: ''
 
 ## Feedback
 
-<!-- leave feedback on Tanzu Community Edition here -->
+<!-- leave feedback on VMware Tanzu Homebrew Tap here -->
 
 ## Suggested Changes
 

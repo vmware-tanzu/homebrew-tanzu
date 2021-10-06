@@ -6,7 +6,7 @@ labels: kind/bug, triage/needs-triage
 assignees: ''
 
 ---
-<!-- Before creating a new issue please search for any existing related [issues](https://github.com/vmware-tanzu/community-edition/issues?q=is%3Aissue+) before creating a new one. If you find an issue, join the discussion and add emoji or comments with your scenario or subscribe to follow updates. -->
+<!-- Before creating a new issue please search for any existing related [issues](https://github.com/vmware-tanzu/homebrew-tanzu/issues?q=is%3Aissue+) before creating a new one. If you find an issue, join the discussion and add emoji or comments with your scenario or subscribe to follow updates. -->
 
 ## Bug Report
 
@@ -26,9 +26,7 @@ assignees: ''
 
 ## Environment Details
 
-* Build version (`tanzu version`): 
-* Deployment (Managed/Standalone cluster): 
-* Infrastructure Provider (Docker/AWS/Azure/vSphere): 
+* Build version (`brew --version`): 
 * Operating System (client):
 
 ## Diagnostics and log bundle

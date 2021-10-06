@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-<!-- Before creating a new feature request please search for any existing related [issues](https://github.com/vmware-tanzu/community-edition/issues?q=is%3Aissue+). If you find an issue, join the discussion and add emoji or comments with your scenario or subscribe to follow updates. -->
+<!-- Before creating a new feature request please search for any existing related [issues](https://github.com/vmware-tanzu/homebrew-tanzu/issues?q=is%3Aissue+). If you find an issue, join the discussion and add emoji or comments with your scenario or subscribe to follow updates. -->
 
 ## Feature Request
 
