@@ -1,0 +1,9 @@
+# Labels in the form of "kind/<label>"
+# that can be applied with the "/kind <label>" prow chat-op command
+kind:
+- "bug"
+- "feature"
+- "enhancement"
+- "docs"
+- "test-release"
+- "feedback"
