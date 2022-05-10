@@ -4,15 +4,15 @@
 class TanzuCommunityEdition < Formula
   desc "Tanzu Community Edition"
   homepage "https://github.com/vmware-tanzu/community-edition"
-  version "v0.11.0"
+  version "v0.12.0"
   head "https://github.com/vmware-tanzu/community-edition.git"
 
   if OS.mac?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-darwin-amd64-#{version}.tar.gz"
-    sha256 "c1bd55cca7b618af695447d4808d3b7fac7f33592c83f2dc3c789e1e2ece57e1"
+    sha256 "4640f41b773087068e50ddce1455bc0b6b74300b2884557ab70ae2f2cc44a9de"
   elsif OS.linux?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-linux-amd64-#{version}.tar.gz"
-    sha256 "c287e86caf995b8d84068902635be1e3ded9b8be7889b69b302da27e543ace1e"
+    sha256 "32c8047c1e82691f17541159571f8216ee97423efeddb9a396b1addbfb06f37f"
   end
 
   def install
@@ -58,9 +58,9 @@ class TanzuCommunityEdition < Formula
 
   def brew_installer_script
     <<-EOF
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Copyright 2021 VMware Tanzu Community Edition contributors. All Rights Reserved.
+# Copyright 2021-2022 VMware Tanzu Community Edition contributors. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
 set -o errexit
@@ -110,19 +110,9 @@ install "${MY_DIR}/uninstall.sh" "${XDG_DATA_HOME}/tce"
 mkdir -p "${XDG_CONFIG_HOME}/tanzu-plugins"
 
 cp -r "${MY_DIR}/default-local/." "${XDG_CONFIG_HOME}/tanzu-plugins"
-# install plugins
-tanzu plugin install builder
-tanzu plugin install codegen
-tanzu plugin install cluster
-tanzu plugin install kubernetes-release
-tanzu plugin install login
-tanzu plugin install management-cluster
-tanzu plugin install package
-tanzu plugin install pinniped-auth
-tanzu plugin install secret
-tanzu plugin install conformance
-tanzu plugin install diagnostics
-tanzu plugin install unmanaged-cluster
+
+# explicit init of tanzu cli and add tce repo
+tanzu init
 
 # Make a backup of Kubernetes configs
 set +o errexit
