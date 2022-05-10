@@ -8,61 +8,64 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-HOMEBREW_TAP_REPO_PATH="${MY_DIR}"/..
+if [[ -z "${BUILD_VERSION}" ]]; then
+    echo "BUILD_VERSION is not set"
+    exit 1
+fi
 
-HOMEBREW_DIR="$(mktemp -d)"
+# select for GA or unstable (non-GA) homebrew file
+HOMEBREW_FORMULA="tanzu-community-edition.rb"
+HOMEBREW_INSTALL_DIR="tanzu-community-edition"
+if [[ "${BUILD_VERSION}" == *"-"* ]]; then
+    HOMEBREW_FORMULA="tanzu-community-edition-unstable.rb"
+    HOMEBREW_INSTALL_DIR="tanzu-community-edition-unstable"
+fi
 
-trap '{ rm -rf -- "${HOMEBREW_DIR}"; }' EXIT
+HOMEBREW_TAP_REPO_PATH="$(git rev-parse --show-toplevel)"
+HOMEBREW_WORKING_DIR="$(mktemp -d)"
 
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "${HOMEBREW_DIR}"
+trap '{ rm -rf -- "${HOMEBREW_WORKING_DIR}"; }' EXIT
 
-shellenv=$("${HOMEBREW_DIR}"/bin/brew shellenv)
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "${HOMEBREW_WORKING_DIR}"
+
+shellenv=$("${HOMEBREW_WORKING_DIR}"/bin/brew shellenv)
 
 eval "${shellenv}"
 
 brew update --force --quiet
+brew install --formula "${HOMEBREW_TAP_REPO_PATH}/${HOMEBREW_FORMULA}"
 
-brew install --formula "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition.rb
+tce_installation_dir=("${HOMEBREW_WORKING_DIR}/Cellar/${HOMEBREW_INSTALL_DIR}/${BUILD_VERSION}")
 
-tce_installation_dir=("${HOMEBREW_DIR}"/Cellar/tanzu-community-edition/*)
 
-if [ ${#tce_installation_dir[@]} != 1 ]; then
-    echo "TCE was not installed!"
-    exit 1
-fi
+pushd "${tce_installation_dir}" || exit 1
 
-"${tce_installation_dir[0]}"/libexec/configure-tce.sh
+    ./libexec/configure-tce.sh
 
-tanzu version
+    # TODO: this needs to dynamically pick up on these things
+    tanzu version
+    tanzu cluster version
+    tanzu conformance version
+    tanzu diagnostics version
+    tanzu unmanaged-cluster version
+    tanzu kubernetes-release version
+    tanzu management-cluster version
+    tanzu package version
+    tanzu standalone-cluster version
+    tanzu pinniped-auth version
+    tanzu builder version
+    tanzu login version
+    # TODO: end
 
-tanzu cluster version
+    ./libexec/uninstall.sh
 
-tanzu conformance version
+    set +o xtrace
+    source ~/.bash_profile
+    set -o xtrace
 
-tanzu diagnostics version
+    if [[ -n "$(command -v tanzu)" ]]; then
+        echo "tanzu command still exists!"
+        exit 1
+    fi
 
-tanzu kubernetes-release version
-
-tanzu management-cluster version
-
-tanzu package version
-
-tanzu standalone-cluster version
-
-tanzu pinniped-auth version
-
-tanzu builder version
-
-tanzu login version
-
-"${tce_installation_dir[0]}"/libexec/uninstall.sh
-
-set +o xtrace
-source ~/.bash_profile
-set -o xtrace
-
-if [[ -n "$(command -v tanzu)" ]]; then
-    echo "tanzu command still exists!"
-    exit 1
-fi
+popd || exit 1
