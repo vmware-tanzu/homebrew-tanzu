@@ -4,15 +4,15 @@
 class TanzuCommunityEdition < Formula
   desc "Tanzu Community Edition"
   homepage "https://github.com/vmware-tanzu/community-edition"
-  version "v0.12.0"
+  version "v0.12.1"
   head "https://github.com/vmware-tanzu/community-edition.git"
 
   if OS.mac?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-darwin-amd64-#{version}.tar.gz"
-    sha256 "4640f41b773087068e50ddce1455bc0b6b74300b2884557ab70ae2f2cc44a9de"
+    sha256 "f187c10b3a34f72b4dc2e219be5d016a71385cc36f6bd5f06f2d60203d2e6ddb"
   elsif OS.linux?
     url "https://github.com/vmware-tanzu/community-edition/releases/download/#{version}/tce-linux-amd64-#{version}.tar.gz"
-    sha256 "32c8047c1e82691f17541159571f8216ee97423efeddb9a396b1addbfb06f37f"
+    sha256 "2151ba4ceba769dc4ce4922dddd9ee033cdeca0bccad4cc58f42910d1fa5c987"
   end
 
   def install
