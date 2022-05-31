@@ -8,25 +8,33 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-version="${1:?TCE version argument empty. Example usage: ./hack/homebrew/update-homebrew-package.sh v0.10.0}"
-: "${GITHUB_TOKEN:?GITHUB_TOKEN is not set}"
+if [[ -z "${BUILD_VERSION}" ]]; then
+    echo "BUILD_VERSION is not set"
+    exit 1
+fi
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-HOMEBREW_TAP_REPO_PATH="${MY_DIR}"/..
+# select for GA or unstable (non-GA) homebrew file
+HOMEBREW_FORMULA="tanzu-community-edition.rb"
+PREVIOUS_VERSION="$(grep -E "version.+\"v[0-9]+.[0-9]+.[0-9]+\"" ./tanzu-community-edition-unstable.rb | cut -d"\"" -f2)"
+if [[ "${BUILD_VERSION}" == *"-"* ]]; then
+    HOMEBREW_FORMULA="tanzu-community-edition-unstable.rb"
+    PREVIOUS_VERSION="$(grep -E "version.+\"v[0-9]+.[0-9]+.[0-9]+\"" ./tanzu-community-edition.rb | cut -d"\"" -f2)"
+fi
+
+HOMEBREW_TAP_REPO_PATH="$(git rev-parse --show-toplevel)"
 
 # checking current TCE version
-"${HOMEBREW_TAP_REPO_PATH}"/test/check-tce-homebrew-formula.sh
+BUILD_VERSION="${PREVIOUS_VERSION}" "${HOMEBREW_TAP_REPO_PATH}/test/check-tce-homebrew-formula.sh"
 
-# Temprory home brew formulae file creation 
-cat "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition.rb > "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition-temp.rb
-rm -fv "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition-temp.rb.bak
+# Temporary homebrew formula file creation 
+cat "${HOMEBREW_TAP_REPO_PATH}/${HOMEBREW_FORMULA}" > "${HOMEBREW_TAP_REPO_PATH}/temp-${HOMEBREW_FORMULA}"
+rm -fv "${HOMEBREW_TAP_REPO_PATH}/temp-${HOMEBREW_FORMULA}"
 
-"${HOMEBREW_TAP_REPO_PATH}"/test/update-homebrew-formula.sh "${version}"
+BUILD_VERSION="${BUILD_VERSION}" "${HOMEBREW_TAP_REPO_PATH}/test/update-homebrew-formula.sh"
 
-# checking lates TCE stable version
-"${HOMEBREW_TAP_REPO_PATH}"/test/check-tce-homebrew-formula.sh
+# checking latest TCE version
+"${HOMEBREW_TAP_REPO_PATH}/test/check-tce-homebrew-formula.sh"
+cp "${HOMEBREW_TAP_REPO_PATH}/temp-${HOMEBREW_FORMULA}" "${HOMEBREW_TAP_REPO_PATH}/${HOMEBREW_FORMULA}"
 
-cp "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition-temp.rb "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition.rb
-
-# cleaning up the tenp files
-rm -fv "${HOMEBREW_TAP_REPO_PATH}"/tanzu-community-edition-temp.rb
+# cleaning up the temp files
+rm -fv "${HOMEBREW_TAP_REPO_PATH}/temp-${HOMEBREW_FORMULA}"
