@@ -4,11 +4,11 @@
 class TanzuCli < Formula
   desc "The core Tanzu command-line tool"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "0.90.0-pre-alpha.0"
+  version "0.89.0-pre-alpha.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "61d979a5f84861ad5ada3b5e98ce019ee13a5df8b94800591f5e94abb4cade34",
+    "darwin-amd64" => "161bd110b1e7843d90cc624b519ecab703d033c62dce98584139c1dee636f8d7",
     "linux-amd64"  => "c9967ea224a9b2cb0edd9a061a157e234b83ed4876757b1eada0f3025214e4b6",
   }
 
