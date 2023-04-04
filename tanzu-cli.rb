@@ -4,11 +4,11 @@
 class TanzuCli < Formula
   desc "The core Tanzu command-line tool"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "0.0.18"
+  version "0.80.2"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "d91719840534d564ff3e3f8512ae2302620444e34fa53919927cb6d185fa735d",
+    "darwin-amd64" => "c55b360003066db938e08d633ab2402605a6f15a22baf5acd4bb0f4bbfe50918",
     "linux-amd64"  => "c9967ea224a9b2cb0edd9a061a157e234b83ed4876757b1eada0f3025214e4b6",
   }
 
@@ -23,7 +23,7 @@ class TanzuCli < Formula
     $os = "linux"
   end
 
-  url "http://build-squid.eng.vmware.com/build/mts/release/bora-21550143/publish/lin64/tanzu-cli/tanzu_cli/tanzu-cli-darwin-amd64.tar.gz"
+  url "http://build-squid.eng.vmware.com/build/mts/release/bora-21550927/publish/lin64/tanzu-cli/tanzu_cli/tanzu-cli-darwin-amd64.tar.gz"
 #  url "https://github.com/marckhouzam/tanzu-cli/releases/download/v#{version}/tanzu-cli-#{$os}-#{$arch}.tar.gz"
   sha256 checksums["#{$os}-#{$arch}"]
 
@@ -44,9 +44,12 @@ class TanzuCli < Formula
 
   # This verifies the installation
   test do
-    assert_match "version: v#{version}", shell_output("#{bin}/tanzu version")
+    # TODO(khouzam): enable when `tanzu version` does not trigger the CEIP prompt
+    # assert_match "version: v#{version}", shell_output("#{bin}/tanzu version")
 
-    output = shell_output("#{bin}/tanzu config get")
-    assert_match "clientOptions", output
+    # Run the test with the completion command because it won't
+    # trigger the CEIP prompt
+    output = shell_output("#{bin}/tanzu completion bash")
+    assert_match "__start_tanzu", output
   end
 end
