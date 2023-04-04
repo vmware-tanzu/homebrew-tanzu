@@ -8,7 +8,7 @@ class TanzuCli < Formula
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "161bd110b1e7843d90cc624b519ecab703d033c62dce98584139c1dee636f8d7",
+    "darwin-amd64" => "d91719840534d564ff3e3f8512ae2302620444e34fa53919927cb6d185fa735d",
     "linux-amd64"  => "c9967ea224a9b2cb0edd9a061a157e234b83ed4876757b1eada0f3025214e4b6",
   }
 
@@ -23,7 +23,8 @@ class TanzuCli < Formula
     $os = "linux"
   end
 
-  url "https://github.com/marckhouzam/tanzu-cli/releases/download/v#{version}/tanzu-cli-#{$os}-#{$arch}.tar.gz"
+  url "http://build-squid.eng.vmware.com/build/mts/release/bora-21550143/publish/lin64/tanzu-cli/tanzu_cli/tanzu-cli-darwin-amd64.tar.gz"
+#  url "https://github.com/marckhouzam/tanzu-cli/releases/download/v#{version}/tanzu-cli-#{$os}-#{$arch}.tar.gz"
   sha256 checksums["#{$os}-#{$arch}"]
 
   def install
