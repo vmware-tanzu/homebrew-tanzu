@@ -23,7 +23,7 @@ class TanzuCli < Formula
     $os = "linux"
   end
 
-  url "https://github.com/marckhouzam/tanzu-cli/releases/download/v#{version}/tanzu-cli-#{$os}-#{$arch}.tar.gz"
+  url "https://github.com/vmware-tanzu/tanzu-cli/releases/download/v#{version}/tanzu-cli-#{$os}-#{$arch}.tar.gz"
   sha256 checksums["#{$os}-#{$arch}"]
 
   def install
