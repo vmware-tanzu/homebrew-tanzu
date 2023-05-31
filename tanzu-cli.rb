@@ -4,12 +4,12 @@
 class TanzuCli < Formula
   desc "The core Tanzu command-line tool"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "0.90.0-alpha.2"
+  version "0.90.0-beta.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "a8e6479ca4ce91a364dd69e9ce9e63be8e7f56b28aa3d98d82cbd575a3708700",
-    "linux-amd64"  => "2b9f3c685779f0dff344d4754e154df061dc6e44a8e95df17cc838f0eeed2d88",
+    "darwin-amd64" => "5cd286e816290aef894fe9e4deaf0c9ac0705ce1c9270aa980493fd2e9f68a24",
+    "linux-amd64"  => "8758973bad7c6c00abbb39c6178f5ba1eee2a0310e41545e8b63ac3756701a9d",
   }
 
   # Switch this to "arm64" when it is supported by CLI builds
@@ -43,8 +43,8 @@ class TanzuCli < Formula
 
   # This verifies the installation
   test do
-    # DO NOT set the ceip value here as it will persist for the
-    # user's release installation.  Instead, just use commands that
+    # DO NOT set the eula or ceip values here as they would be persisted
+    # for the user's release installation.  Instead, just use commands that
     # don't trigger the ceip prompt.
 
     assert_match "version: v#{version}", shell_output("#{bin}/tanzu version")
