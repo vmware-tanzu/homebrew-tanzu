@@ -1,15 +1,15 @@
 # Copyright 2023 VMware, Inc. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-class TanzuCli < Formula
-  desc "The core Tanzu command-line tool"
+class TanzuCliUnstable < Formula
+  desc "The core Tanzu command-line tool (unstable builds)"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "0.90.1"
+  version "1.0.0-rc.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "124a976dd75a9b43a7050cfc2ffa9f090321a488213f23f21f47657c58b14788",
-    "linux-amd64"  => "fec9e268399443de94d1761678aa39be18b7b685dd34a4412933943647b9d0be",
+    "darwin-amd64" => "7186eb48249609738621cb1fb5b27f6ce4e788a0dac255899129fc446964ef94",
+    "linux-amd64"  => "3fde5c059117c188a771c20f64a7c1ecba146bcb5237888daf98e7c2ad689a74",
   }
 
   # Switch this to "arm64" when it is supported by CLI builds
