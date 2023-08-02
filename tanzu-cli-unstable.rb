@@ -4,12 +4,12 @@
 class TanzuCliUnstable < Formula
   desc "The core Tanzu command-line tool (unstable builds)"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "1.0.0-rc.0"
+  version "1.0.0-rc.1"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "7186eb48249609738621cb1fb5b27f6ce4e788a0dac255899129fc446964ef94",
-    "linux-amd64"  => "3fde5c059117c188a771c20f64a7c1ecba146bcb5237888daf98e7c2ad689a74",
+    "darwin-amd64" => "bba97c31a871e6475ec7f7c865f2116cdc145961228f43f925168dc371166456",
+    "linux-amd64"  => "680ff8d014d485ccb525c26273e46fa38e2272d964a919cd44de877b306ebb75",
   }
 
   # Switch this to "arm64" when it is supported by CLI builds
