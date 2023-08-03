@@ -4,16 +4,18 @@
 class TanzuCli < Formula
   desc "The core Tanzu command-line tool"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "0.90.1"
+  version "1.0.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "124a976dd75a9b43a7050cfc2ffa9f090321a488213f23f21f47657c58b14788",
-    "linux-amd64"  => "fec9e268399443de94d1761678aa39be18b7b685dd34a4412933943647b9d0be",
+    "darwin-amd64" => "",
+    "linux-amd64"  => "",
+    "darwin-arm64" => "",
+    "linux-arm64"  => "",
   }
 
   # Switch this to "arm64" when it is supported by CLI builds
-  $arch = "amd64"
+  $arch = "arm64"
   on_intel do
     $arch = "amd64"
   end
