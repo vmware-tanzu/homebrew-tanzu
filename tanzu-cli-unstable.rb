@@ -4,16 +4,17 @@
 class TanzuCliUnstable < Formula
   desc "The core Tanzu command-line tool (unstable builds)"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "1.0.0-rc.1"
+  version "1.1.0-alpha.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "bba97c31a871e6475ec7f7c865f2116cdc145961228f43f925168dc371166456",
-    "linux-amd64"  => "680ff8d014d485ccb525c26273e46fa38e2272d964a919cd44de877b306ebb75",
+    "darwin-amd64" => "4d2898143984d60e575f71f4e33ff6c345e1083eeb18b7a41bf0267ea3ed70ee",
+    "darwin-arm64" => "43864ea34367036adc23f6e809d98e14a3ba30cf25fed2ff770bfb670a60283d",
+    "linux-amd64"  => "f7792912ec01e391eb770189e76ff249fef37f1251464512bcc16e4f347449a8",
+    "linux-arm64"  => "bf7d13cfc9b971ffbea248c67c46e92d28f6a2f83f8b5fe7bba32f29df9fa36c",
   }
 
-  # Switch this to "arm64" when it is supported by CLI builds
-  $arch = "amd64"
+  $arch = "arm64"
   on_intel do
     $arch = "amd64"
   end
