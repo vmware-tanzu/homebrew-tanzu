@@ -8,10 +8,10 @@ class TanzuCli < Formula
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "dc0d085810f05267f5d50616383cb2c4d287e77593ef15eb889253b752cd540e",
-    "darwin-arm64" => "74b7d0be84118b1bed31286a58b032f3ccdc1fe3d5dd4083f2954c3e38d42c76",
-    "linux-amd64"  => "01efcddc3ff9e198984bc4fb429405431906d088dba4255a94c19e62d55cd6fb",
-    "linux-arm64"  => "ad73674f845db848bc0892ba641f8c20686f8735ebc56cb68f3390edde04508d",
+    "darwin-amd64" => "fb6e019ead4ee908960d6ede237388afe25761f19cbc68b6665d038d30c65550",
+    "darwin-arm64" => "315523b5938c02af5e7bc53db0ad1049a2482191944efdf0a59c3602bf1e0bb4",
+    "linux-amd64"  => "1656f189a0fd187bf1ed7f76c33b7f4f70e65bfcc358fac3a73b3819df966292",
+    "linux-arm64"  => "ab93afacc0f9e1e4a25da41f532236c133ccfbc508919f361ac093ff1ec4309b",
   }
 
   $arch = "arm64"
