@@ -4,14 +4,14 @@
 class TanzuCliUnstable < Formula
   desc "The core Tanzu command-line tool (unstable builds)"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "1.2.0-rc.0"
+  version "1.3.0-alpha.0"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "ba4871dbdf45c6c16a12f24dd9248e8c356ba688269b7491b06fdba52f24d90f",
-    "darwin-arm64" => "2b8d114d3df382cf2be0943af5029fd2fed9d3d981a8c39f2d5b86ba60ca92c5",
-    "linux-amd64"  => "11276c3916b6f4fc28c92aa715b1c40577d9857bc3843afaed5cf5105a42cd83",
-    "linux-arm64"  => "3a304d46aa082e0275ecf46439f1650719c887fb220d706ffa7a0dc93cab1acf",
+    "darwin-amd64" => "a6512e93a1b2cbf4db84ed77956953293303abef24e3b564a9dd708636aa348a",
+    "darwin-arm64" => "e5e0d2adc26d49d768427271e6e353816e5e4d1e5ebbcd4bf6b4ba77acd4bd04",
+    "linux-amd64"  => "70034989864d54e8753e6d0bf7ad99b226b8fac086ff1aa92696eb5c0c2a1826",
+    "linux-arm64"  => "d8c1f0654507df6e0e8b446c53a225582b7e9d83329ea3755fac111fbf18fa3d",
   }
 
   $arch = "arm64"
