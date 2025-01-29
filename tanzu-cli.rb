@@ -4,14 +4,14 @@
 class TanzuCli < Formula
   desc "The core Tanzu command-line tool"
   homepage "https://github.com/vmware-tanzu/tanzu-cli"
-  version "1.5.2"
+  version "1.5.3"
   head "https://github.com/vmware-tanzu/tanzu-cli.git", branch: "main"
 
   checksums = {
-    "darwin-amd64" => "1072c60ed1b4d75a94ae7b40ce3747a2c115f7d190a8a9d9229a05427abf599c",
-    "darwin-arm64" => "eff4aabf365f953de0cbac2782fcd4b367446f42076ce35b35224cb56b8b27fc",
-    "linux-amd64"  => "bae905e967f17445de7d487d2b58421dcb503fa17845e27f6c316cc853b62aaf",
-    "linux-arm64"  => "93c37247c4ad725c2e9b3675b88e8c3f6d8f43fe1ea91080e8ab3090c9598178",
+    "darwin-amd64" => "f23dd2420615b23c900949aa02955e9666e2b538c4440efe6f1a5b3d4c82ab44",
+    "darwin-arm64" => "1c3b6bd150092e74aec6dd4738025b1e5d1943bf81c0801279187e68e76ae28e",
+    "linux-amd64"  => "5b865ef1c9c93e8b2dd302354b69d737ddc3c3072e94585658fddc844adff8e5",
+    "linux-arm64"  => "6044468a7bd96c936a713b78f4aad780fff7ac4c93e88822871124bb070f64d0",
   }
 
   $arch = "arm64"
